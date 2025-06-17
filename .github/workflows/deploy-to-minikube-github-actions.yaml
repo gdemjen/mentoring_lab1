@@ -22,6 +22,11 @@ jobs:
     - name: Deploy to minikube
       run:
         kubectl apply -f k8s-node-app.yaml
+    - name: Wait / Sleep
+      uses: jakejarvis/wait-action@v0.1.1
+      with:
+        time: 1m
+      
     - name: Test service URLs
       run: |
           minikube service list
